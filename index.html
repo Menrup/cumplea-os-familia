@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>🎉 Cumpleaños Mágico Familiar 🎉</title>
     
+    <!-- Importación de la tipografía premium Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -307,10 +308,9 @@
 
 <script>
     // =========================================================================
-    //  LISTA CON EFECTOS TEMÁTICOS PERSONALIZADOS Y EXCLUSIVOS (20 PERSONAS)
+    //  LISTA DE INTEGRANTES FAMILIARES REALES (Limpios de marcadores de posición)
     // =========================================================================
     const birthdays = [
-        // --- Integrantes Actuales ---
         { nombre: "Jesús", mes: 5, dia: 11, año: 1985, efecto: "galaxia" },
         { nombre: "Wily", mes: 6, dia: 6, año: null, efecto: "carnaval" },
         { nombre: "Vidal", mes: 7, dia: 2, año: null, efecto: "criollo" },
@@ -321,18 +321,7 @@
         { nombre: "Gregoria", mes: 10, dia: 28, año: null, efecto: "atardecer" },
         { nombre: "Raquel", mes: 11, dia: 11, año: null, efecto: "aurora" },
         { nombre: "Ely", mes: 11, dia: 24, año: null, efecto: "primavera" },
-        { nombre: "Deisy", mes: 11, dia: 30, año: null, efecto: "dulces" },
-
-        // --- Espacios listos para 9 nuevos integrantes (Hombres, Mujeres y Variados) ---
-        { nombre: "Familiar_Nuevo_1", mes: 1, dia: 15, año: null, efecto: "pica_pica" },
-        { nombre: "Familiar_Nuevo_2", mes: 2, dia: 20, año: null, efecto: "estrellas_cielo" },
-        { nombre: "Familiar_Nuevo_3", mes: 3, dia: 10, año: null, efecto: "nubes_color" },
-        { nombre: "Familiar_Nuevo_4", mes: 4, dia: 5, año: null, efecto: "diamantes" },
-        { nombre: "Familiar_Nuevo_5", mes: 5, dia: 18, año: null, efecto: "neon_retro" },
-        { nombre: "Familiar_Nuevo_6", mes: 6, dia: 25, año: null, efecto: "futbol" },
-        { nombre: "Familiar_Nuevo_7", mes: 9, dia: 12, año: null, efecto: "videojuegos" },
-        { nombre: "Familiar_Nuevo_8", mes: 12, dia: 8, año: null, efecto: "flores_cerezo" },
-        { nombre: "Familiar_Nuevo_9", mes: 12, dia: 25, año: null, efecto: "navideño" }
+        { nombre: "Deisy", mes: 11, dia: 30, año: null, efecto: "dulces" }
     ];
 
     // =========================================================================
@@ -352,7 +341,7 @@
     ];
 
     // =========================================================================
-    //  PALETAS DE COLORES EXCLUSIVAS (20 EFECTOS PARA CONFETI)
+    //  REPERTORIO COMPLETO DE PALETAS DE COLORES (20 efectos guardados listos)
     // =========================================================================
     const ef_colors = {
         galaxia: ["#a29bfe", "#74b9ff", "#ffeaa7", "#fd79a8", "#ffffff"],
@@ -381,7 +370,7 @@
     };
 
     // =========================================================================
-    //  EMOJIS EXCLUSIVOS FLOTANTES (20 EFECTOS TEMÁTICOS)
+    //  REPERTORIO COMPLETO DE EMOJIS (20 efectos guardados listos)
     // =========================================================================
     const ef_emojis = {
         galaxia: ["✨", "⭐", "🌟", "🌌", "🌙"],
@@ -455,7 +444,6 @@
                 }
             });
             
-            // Tómbola aleatoria de mensajes para el festejado
             const mensajeAleatorio = bancoMensajes[Math.floor(Math.random() * bancoMensajes.length)];
             todayExtra.innerHTML = edadHtml + `🎈 ${mensajeAleatorio} 🎈`;
             
