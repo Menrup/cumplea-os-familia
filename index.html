@@ -308,7 +308,7 @@
 
 <script>
     // =========================================================================
-    //  LISTA DE INTEGRANTES FAMILIARES REALES (Limpios de marcadores de posición)
+    //  LISTA DE INTEGRANTES FAMILIARES REALES
     // =========================================================================
     const birthdays = [
         { nombre: "Jesús", mes: 5, dia: 11, año: 1985, efecto: "galaxia" },
@@ -325,7 +325,7 @@
     ];
 
     // =========================================================================
-    //  BANCO DE DATOS DE MENSAJES ALEATORIOS (Se elige uno al azar cada año)
+    //  BANCO DE DATOS DE MENSAJES ALEATORIOS
     // =========================================================================
     const bancoMensajes = [
         "Hoy la magia florece de forma exclusiva para ti.",
@@ -350,18 +350,15 @@
         bosque: ["#55efc4", "#81ecec", "#ffeaa7", "#fab1a0", "#74b9ff"],
         oceano: ["#00d2ff", "#00a8cc", "#a2e8f5", "#ffffff", "#74b9ff"],
         primavera: ["#ff9ff3", "#feca57", "#ff6b6b", "#48dbfb", "#ffccd5"],
-        
         pica_pica: ["#ff3e7f", "#33ffaa", "#ffaa33", "#33aaff", "#e91e63", "#9c27b0"],
         estrellas_cielo: ["#fff9db", "#fff3bf", "#ffd43b", "#fab005", "#ffffff"],
         nubes_color: ["#ffc0cb", "#e0b0ff", "#b0e0e6", "#fffdd0", "#e6e6fa"],
         diamantes: ["#e3fafc", "#c5f6fa", "#99e9f2", "#66d9e8", "#ffffff"],
         atardecer: ["#ff4545", "#ff7600", "#ffba00", "#9e0059", "#ff007f"],
         aurora: ["#05f4b7", "#00e5ff", "#bd00ff", "#00ff87", "#38ef7d"],
-        
         dulces: ["#ffb7b2", "#ffdac1", "#e2f0cb", "#b5ead7", "#c7ceea"],
         realeza: ["#d4af37", "#aa7c11", "#800020", "#daa520", "#f4e8c1"],
         flores_cerezo: ["#ffb3ba", "#ffc6ff", "#ffffff", "#ff85a1", "#f7cad0"],
-        
         universo: ["#111111", "#0d1b2a", "#415a77", "#778da9", "#e0e1dd"],
         neon_retro: ["#39ff14", "#ff007f", "#00ffff", "#ff00ff", "#ffff00"],
         futbol: ["#2b8a3e", "#5c940d", "#a9e34b", "#ffffff", "#1098ad"],
@@ -379,24 +376,67 @@
         bosque: ["🦋", "🍃", "🌸", "🦉", "🍄"],
         oceano: ["🫧", "🌊", "🐬", "🐚", "💎"],
         primavera: ["🌸", "🌹", "🌷", "💖", "🕊️"],
-        
         pica_pica: ["🎊", "🎉", "🪅", "🥳", "✨"],
         estrellas_cielo: ["⭐", "✨", "🌠", "☄️", "🌙"],
         nubes_color: ["☁️", "🌤️", "🌈", "🦄", "🌸"],
         diamantes: ["💎", "💍", "👑", "✨", "🔮"],
         atardecer: ["🌅", "☀️", "😎", "🌴", "🍹"],
         aurora: ["🌌", "✨", "🔮", "🧪", "🪐"],
-        
         dulces: ["🍦", "🍩", "🍪", "🎂", "🍫"],
         realeza: ["👑", "🏰", "👠", "💄", "🥂"],
         flores_cerezo: ["🌸", "💮", "🎀", "🕊️", "💕"],
-        
         universo: ["🚀", "🪐", "🛸", "👨‍🚀", "☄️"],
         neon_retro: ["🕶️", "⚡", "👾", "📀", "🛹"],
         futbol: ["⚽", "🏆", "🥇", "👟", "🏃‍♂️"],
         videojuegos: ["🎮", "🕹️", "👾", "💥", "⚡"],
         navideño: ["🎄", "🎅", "🎁", "❄️", "☃️"]
     };
+
+    // =========================================================================
+    //  SISTEMA DE AUDIO DE CUMPLEAÑOS SINTETIZADO (NATIVO DE NAVEGADOR)
+    // =========================================================================
+    function playBirthdayMelody() {
+        try {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (!AudioContext) return;
+            const ctx = new AudioContext();
+            
+            // Notas de Feliz Cumpleaños (Frecuencia, Duración en segundos)
+            const notas = [
+                { f: 261.63, d: 0.4 }, { f: 261.63, d: 0.2 }, { f: 293.66, d: 0.6 }, 
+                { f: 261.63, d: 0.6 }, { f: 349.23, d: 0.6 }, { f: 329.63, d: 1.0 },
+                { f: 261.63, d: 0.4 }, { f: 261.63, d: 0.2 }, { f: 293.66, d: 0.6 }, 
+                { f: 261.63, d: 0.6 }, { f: 392.00, d: 0.6 }, { f: 349.23, d: 1.0 }
+            ];
+
+            let tiempoActual = ctx.currentTime;
+
+            notas.forEach(nota => {
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                
+                // Tipo de onda retro/festivo limpio (triangle o sine)
+                osc.type = "triangle"; 
+                osc.frequency.value = nota.f;
+
+                // Suavizado de entrada y salida de volumen para evitar chasquidos
+                gain.gain.setValueAtTime(0, tiempoActual);
+                gain.gain.linearRampToValueAtTime(0.15, tiempoActual + 0.05);
+                gain.gain.setValueAtTime(0.15, tiempoActual + nota.d - 0.05);
+                gain.gain.linearRampToValueAtTime(0, tiempoActual + nota.d);
+
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                osc.start(tiempoActual);
+                osc.stop(tiempoActual + nota.d);
+
+                tiempoActual += nota.d + 0.05; // Espacio entre notas
+            });
+        } catch (e) {
+            console.log("Audio bloqueado o no soportado por el navegador.");
+        }
+    }
 
     function isToday(mesReal, dia) {
         const hoy = new Date();
@@ -448,6 +488,15 @@
             todayExtra.innerHTML = edadHtml + `🎈 ${mensajeAleatorio} 🎈`;
             
             startMagicalCelebration(hoyCumples[0].efecto);
+
+            // Activa el sonido automático al primer clic o toque que el usuario haga en la pantalla
+            const activarSonido = () => {
+                playBirthdayMelody();
+                window.removeEventListener('click', activarSonido);
+                window.removeEventListener('touchstart', activarSonido);
+            };
+            window.addEventListener('click', activarSonido);
+            window.addEventListener('touchstart', activarSonido);
         } else {
             const proximos = [...birthdays].map(b => ({ ...b, days: daysUntil(b.mes, b.dia) })).sort((a,b)=>a.days-b.days);
             const next = proximos[0];
@@ -564,12 +613,15 @@
     }
 
     document.getElementById("demoCelebrationBtn").addEventListener("click", () => {
+        // Ejecuta melodía al probar la animación
+        playBirthdayMelody();
+
         const todosLosEfectos = Object.keys(ef_colors);
         const efectoAleatorio = todosLosEfectos[Math.floor(Math.random() * todosLosEfectos.length)];
         startMagicalCelebration(efectoAleatorio);
         
         const toast = document.createElement("div");
-        toast.innerHTML = `🎭 Probando: <strong>Tema ${efectoAleatorio.toUpperCase()}</strong> 🌟`;
+        toast.innerHTML = `🎵 Sonando • Probando: <strong>Tema ${efectoAleatorio.toUpperCase()}</strong> 🌟`;
         toast.style.position = "fixed";
         toast.style.bottom = "40px";
         toast.style.left = "50%";
