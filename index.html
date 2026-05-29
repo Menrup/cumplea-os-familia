@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>🎉 Cumpleaños Familia Mendoza Rupay 🎉</title>
+    <title>🎉 Cumpleaños Mágico Familiar 🎉</title>
     
-    <!-- Importación de la tipografía premium Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -50,7 +49,7 @@
             color: white;
         }
 
-        /* Título en Poppins: Recto, imponente y muy elegante */
+        /* Título en Poppins: Recto, imponente y elegante */
         .header h1 {
             font-size: 2.1rem;
             font-weight: 900;
@@ -236,7 +235,7 @@
             letter-spacing: 0.3px;
         }
 
-        /* Capa de partículas mágicas exclusivas */
+        /* Capa de partículas e imanes flotantes interactivos */
         .animation-layer {
             position: fixed;
             top: 0;
@@ -308,39 +307,106 @@
 
 <script>
     // =========================================================================
-    //  LISTA CON EFECTOS TEMÁTICOS PERSONALIZADOS Y EXCLUSIVOS POR INTEGRANTE
+    //  LISTA CON EFECTOS TEMÁTICOS PERSONALIZADOS Y EXCLUSIVOS (20 PERSONAS)
     // =========================================================================
     const birthdays = [
+        // --- Integrantes Actuales ---
         { nombre: "Jesús", mes: 5, dia: 11, año: 1985, efecto: "galaxia" },
         { nombre: "Wily", mes: 6, dia: 6, año: null, efecto: "carnaval" },
         { nombre: "Vidal", mes: 7, dia: 2, año: null, efecto: "criollo" },
         { nombre: "Mary", mes: 7, dia: 24, año: null, efecto: "bosque" },
-        { nombre: "Delia", mes: 8, dia: 27, año: null, efecto: "carnaval" },
+        { nombre: "Delia", mes: 8, dia: 27, año: null, efecto: "realeza" },
         { nombre: "Rebeca", mes: 8, dia: 28, año: null, efecto: "oceano" },
-        { nombre: "Moisés", mes: 8, dia: 30, año: null, efecto: "oceano" },
-        { nombre: "Gregoria", mes: 10, dia: 28, año: null, efecto: "criollo" },
-        { nombre: "Raquel", mes: 11, dia: 11, año: null, efecto: "galaxia" },
+        { nombre: "Moisés", mes: 8, dia: 30, año: null, efecto: "universo" },
+        { nombre: "Gregoria", mes: 10, dia: 28, año: null, efecto: "atardecer" },
+        { nombre: "Raquel", mes: 11, dia: 11, año: null, efecto: "aurora" },
         { nombre: "Ely", mes: 11, dia: 24, año: null, efecto: "primavera" },
-        { nombre: "Deisy", mes: 11, dia: 30, año: null, efecto: "bosque" },
-        { nombre: "Jean", mes: 05, dia: 28, año: null, efecto: "bosque" }
+        { nombre: "Deisy", mes: 11, dia: 30, año: null, efecto: "dulces" },
+
+        // --- Espacios listos para 9 nuevos integrantes (Hombres, Mujeres y Variados) ---
+        { nombre: "Familiar_Nuevo_1", mes: 1, dia: 15, año: null, efecto: "pica_pica" },
+        { nombre: "Familiar_Nuevo_2", mes: 2, dia: 20, año: null, efecto: "estrellas_cielo" },
+        { nombre: "Familiar_Nuevo_3", mes: 3, dia: 10, año: null, efecto: "nubes_color" },
+        { nombre: "Familiar_Nuevo_4", mes: 4, dia: 5, año: null, efecto: "diamantes" },
+        { nombre: "Familiar_Nuevo_5", mes: 5, dia: 18, año: null, efecto: "neon_retro" },
+        { nombre: "Familiar_Nuevo_6", mes: 6, dia: 25, año: null, efecto: "futbol" },
+        { nombre: "Familiar_Nuevo_7", mes: 9, dia: 12, año: null, efecto: "videojuegos" },
+        { nombre: "Familiar_Nuevo_8", mes: 12, dia: 8, año: null, efecto: "flores_cerezo" },
+        { nombre: "Familiar_Nuevo_9", mes: 12, dia: 25, año: null, efecto: "navideño" }
     ];
 
+    // =========================================================================
+    //  BANCO DE DATOS DE MENSAJES ALEATORIOS (Se elige uno al azar cada año)
+    // =========================================================================
+    const bancoMensajes = [
+        "Hoy la magia florece de forma exclusiva para ti.",
+        "¡Que este nuevo año de vida te traiga infinitas alegrías y salud!",
+        "Brindemos por los bellos momentos compartidos y los que están por venir.",
+        "La familia celebra tu vida hoy. ¡Disfruta al máximo tu día especial!",
+        "Que el universo conspire a tu favor y cumpla cada uno de tus sueños.",
+        "Un año más sabio, más fuerte y más querido por toda la familia. ¡Felicidades!",
+        "Tu sonrisa ilumina a nuestra familia. ¡Que pases un cumpleaños inolvidable!",
+        "Hoy el día es más brillante porque celebramos tu existencia. ¡Un fuerte abrazo!",
+        "Que la vida te regale tanto amor y felicidad como el que tú nos das a diario.",
+        "¡A celebrar a lo grande! Que nunca falte la salud, el amor y las risas en tu vida."
+    ];
+
+    // =========================================================================
+    //  PALETAS DE COLORES EXCLUSIVAS (20 EFECTOS PARA CONFETI)
+    // =========================================================================
     const ef_colors = {
-        oceano: ["#00d2ff", "#00a8cc", "#a2e8f5", "#ffffff", "#74b9ff"],
-        bosque: ["#55efc4", "#81ecec", "#ffeaa7", "#fab1a0", "#74b9ff"],
-        criollo: ["#ff7675", "#fdcb6e", "#e17055", "#d63031", "#e84393"],
         galaxia: ["#a29bfe", "#74b9ff", "#ffeaa7", "#fd79a8", "#ffffff"],
         carnaval: ["#fffa65", "#ffaf40", "#ff4d4d", "#ff4b4b", "#18dcff"],
-        primavera: ["#ff9ff3", "#feca57", "#ff6b6b", "#48dbfb", "#ffccd5"]
+        criollo: ["#ff7675", "#fdcb6e", "#e17055", "#d63031", "#e84393"],
+        bosque: ["#55efc4", "#81ecec", "#ffeaa7", "#fab1a0", "#74b9ff"],
+        oceano: ["#00d2ff", "#00a8cc", "#a2e8f5", "#ffffff", "#74b9ff"],
+        primavera: ["#ff9ff3", "#feca57", "#ff6b6b", "#48dbfb", "#ffccd5"],
+        
+        pica_pica: ["#ff3e7f", "#33ffaa", "#ffaa33", "#33aaff", "#e91e63", "#9c27b0"],
+        estrellas_cielo: ["#fff9db", "#fff3bf", "#ffd43b", "#fab005", "#ffffff"],
+        nubes_color: ["#ffc0cb", "#e0b0ff", "#b0e0e6", "#fffdd0", "#e6e6fa"],
+        diamantes: ["#e3fafc", "#c5f6fa", "#99e9f2", "#66d9e8", "#ffffff"],
+        atardecer: ["#ff4545", "#ff7600", "#ffba00", "#9e0059", "#ff007f"],
+        aurora: ["#05f4b7", "#00e5ff", "#bd00ff", "#00ff87", "#38ef7d"],
+        
+        dulces: ["#ffb7b2", "#ffdac1", "#e2f0cb", "#b5ead7", "#c7ceea"],
+        realeza: ["#d4af37", "#aa7c11", "#800020", "#daa520", "#f4e8c1"],
+        flores_cerezo: ["#ffb3ba", "#ffc6ff", "#ffffff", "#ff85a1", "#f7cad0"],
+        
+        universo: ["#111111", "#0d1b2a", "#415a77", "#778da9", "#e0e1dd"],
+        neon_retro: ["#39ff14", "#ff007f", "#00ffff", "#ff00ff", "#ffff00"],
+        futbol: ["#2b8a3e", "#5c940d", "#a9e34b", "#ffffff", "#1098ad"],
+        videojuegos: ["#ff922b", "#51cf66", "#339af0", "#cc5de8", "#fcc419"],
+        navideño: ["#e63946", "#2a9d8f", "#e9c46a", "#1d3557", "#f1faee"]
     };
 
+    // =========================================================================
+    //  EMOJIS EXCLUSIVOS FLOTANTES (20 EFECTOS TEMÁTICOS)
+    // =========================================================================
     const ef_emojis = {
-        oceano: ["🫧", "🌊", "🐬", "🐚", "💎"],
-        bosque: ["🦋", "🍃", "🌸", "🦉", "🍄"],
-        criollo: ["🪅", "🎸", "🍬", "🍭", "🎶"],
         galaxia: ["✨", "⭐", "🌟", "🌌", "🌙"],
         carnaval: ["🎈", "🎭", "🎉", "🎊", "🥂"],
-        primavera: ["🌸", "🌹", "🌷", "💖", "🕊️"]
+        criollo: ["🪅", "🎸", "🍬", "🍭", "🎶"],
+        bosque: ["🦋", "🍃", "🌸", "🦉", "🍄"],
+        oceano: ["🫧", "🌊", "🐬", "🐚", "💎"],
+        primavera: ["🌸", "🌹", "🌷", "💖", "🕊️"],
+        
+        pica_pica: ["🎊", "🎉", "🪅", "🥳", "✨"],
+        estrellas_cielo: ["⭐", "✨", "🌠", "☄️", "🌙"],
+        nubes_color: ["☁️", "🌤️", "🌈", "🦄", "🌸"],
+        diamantes: ["💎", "💍", "👑", "✨", "🔮"],
+        atardecer: ["🌅", "☀️", "😎", "🌴", "🍹"],
+        aurora: ["🌌", "✨", "🔮", "🧪", "🪐"],
+        
+        dulces: ["🍦", "🍩", "🍪", "🎂", "🍫"],
+        realeza: ["👑", "🏰", "👠", "💄", "🥂"],
+        flores_cerezo: ["🌸", "💮", "🎀", "🕊️", "💕"],
+        
+        universo: ["🚀", "🪐", "🛸", "👨‍🚀", "☄️"],
+        neon_retro: ["🕶️", "⚡", "👾", "📀", "🛹"],
+        futbol: ["⚽", "🏆", "🥇", "👟", "🏃‍♂️"],
+        videojuegos: ["🎮", "🕹️", "👾", "💥", "⚡"],
+        navideño: ["🎄", "🎅", "🎁", "❄️", "☃️"]
     };
 
     function isToday(mesReal, dia) {
@@ -388,7 +454,11 @@
                     edadHtml += `¡Brindemos por sus <strong>${edad} años</strong> de vida!<br>`;
                 }
             });
-            todayExtra.innerHTML = edadHtml + "🎈 Hoy la magia florece de forma exclusiva para ti. 🎈";
+            
+            // Tómbola aleatoria de mensajes para el festejado
+            const mensajeAleatorio = bancoMensajes[Math.floor(Math.random() * bancoMensajes.length)];
+            todayExtra.innerHTML = edadHtml + `🎈 ${mensajeAleatorio} 🎈`;
+            
             startMagicalCelebration(hoyCumples[0].efecto);
         } else {
             const proximos = [...birthdays].map(b => ({ ...b, days: daysUntil(b.mes, b.dia) })).sort((a,b)=>a.days-b.days);
@@ -506,12 +576,12 @@
     }
 
     document.getElementById("demoCelebrationBtn").addEventListener("click", () => {
-        const todosLosEfectos = ["oceano", "bosque", "criollo", "galaxia", "carnaval", "primavera"];
+        const todosLosEfectos = Object.keys(ef_colors);
         const efectoAleatorio = todosLosEfectos[Math.floor(Math.random() * todosLosEfectos.length)];
         startMagicalCelebration(efectoAleatorio);
         
         const toast = document.createElement("div");
-        toast.innerHTML = `🎭 Probando: <strong>Efecto ${efectoAleatorio.toUpperCase()}</strong> 💎`;
+        toast.innerHTML = `🎭 Probando: <strong>Tema ${efectoAleatorio.toUpperCase()}</strong> 🌟`;
         toast.style.position = "fixed";
         toast.style.bottom = "40px";
         toast.style.left = "50%";
