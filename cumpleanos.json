@@ -1,0 +1,13 @@
+[
+  { "nombre": "Jesús", "mes": 5, "dia": 11 },
+  { "nombre": "Wily", "mes": 6, "dia": 6 },
+  { "nombre": "Vidal", "mes": 7, "dia": 2 },
+  { "nombre": "Mary", "mes": 7, "dia": 24 },
+  { "nombre": "Delia", "mes": 8, "dia": 27 },
+  { "nombre": "Rebeca", "mes": 8, "dia": 28 },
+  { "nombre": "Moisés", "mes": 8, "dia": 30 },
+  { "nombre": "Gregoria", "mes": 10, "dia": 28 },
+  { "nombre": "Raquel", "mes": 11, "dia": 11 },
+  { "nombre": "Ely", "mes": 11, "dia": 24 },
+  { "nombre": "Deisy", "mes": 11, "dia": 30 }
+]
